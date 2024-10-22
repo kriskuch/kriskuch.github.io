@@ -17,8 +17,8 @@ body {
 #navigation a {
     color: #0065ca; 
     text-decoration: none;
-    margin: 0 20px;
-    padding: 15px 30px;
+    margin: 7px;
+    padding: 5px 3px;
     font-size: 18px;
     display: inline-block;
     transition: color 0.3s ease;
@@ -43,7 +43,7 @@ h1 {
 
 
 img {
-    margin: 7px;
+    margin: 5px;
     border-radius: 3px;
 }
 
@@ -63,10 +63,13 @@ ul li {
 
 #contacts ul li {
     margin-bottom: 15px;
+     text-decoration: none;
+
 }
 
 #contacts ul li a {
     color: #0071e3;
+    
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
