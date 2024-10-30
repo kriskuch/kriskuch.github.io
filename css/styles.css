@@ -1,22 +1,24 @@
-/* Загальні стилі */
+* {
+    margin: 0px;
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
-    margin: 20;
-    padding: 40px;
+    margin: 0px;
+    padding: 0px;
     line-height: 1.8;
     background-color: #e1e1e1; 
     color: #333;
 }
 
-
 #navigation {
     background-color: #1b1b1b;
-    padding: 0px;
+    padding: 20px;
     text-align: center;
 }
 
 #navigation a {
-    color: #0065ca; 
+    color: #4c6987; 
     text-decoration: none;
     margin: 7px;
     padding: 5px 3px;
@@ -26,11 +28,12 @@ body {
 }
 
 #navigation a:hover {
-    color: #85c2ff; /
+    color: #88c3ff;
 }
 
 
 section h3 {
+    margin: 20px;
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -45,7 +48,7 @@ h1 {
 
 img {
     margin: 5px;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 ul li {
@@ -55,7 +58,6 @@ ul li {
     border-radius: 5px;
 }
 
-/* Контакти */
 #contacts ul {
     display: flex;
     flex-direction: column;
@@ -70,7 +72,6 @@ ul li {
 
 #contacts ul li a {
     color: #0071e3;
-    
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
