@@ -1,83 +1,618 @@
+/* Reset and basic styles */
 * {
-    margin: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Enable smooth scrolling */
 }
 
 body {
-    font-family: 'Helvetica Neue', sans-serif;
-    margin: 0px;
-    padding: 0px;
-    line-height: 1.8;
-    background-color: #e1e1e1; 
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #F8EFE5;
     color: #333;
+    line-height: 1.6;
 }
 
-#navigation {
-    background-color: #1b1b1b;
-    padding: 20px;
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #0C6B2A;;
+    height: 100px; /* Consistent header height */
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+/* Initial hidden state */
+section.hidden {
+    opacity: 0;
+    transform: translateY(50px); /* Move section slightly downward */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Visible state when the section scrolls into view */
+section.visible {
+    opacity: 1;
+    transform: translateY(0); /* Reset position */
+}
+
+
+/* Logo */
+.logo img {
+    height: 70px; /* Adjust logo size */
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 40px; /* Increased spacing between nav items */
+}
+
+.nav a {
+    font-size: 25px;
+    font-weight: 400;
+    color: #EEEEDC; /* White text for contrast */
+    text-transform: uppercase; /* Ensure all text is uppercase */
+    transition: color 0.3s ease;
+    font-family: 'Roboto', 'sans-serif';
+    font-style: normal;
+    line-height: 125%;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-right: 50px;
+    font-variant: all-small-caps;
+
+
+}
+
+.nav a:hover {
+    color: #ffc107; /* Highlight color for hover */
+}
+
+/* Hero Section Styles */
+.hero-section {
+    display: flex;
+    align-items: center; /* Vertically center both containers */
+    justify-content: space-around; /* Brings the containers closer */
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 105vh; /* Slightly reduce height to make the section feel centered */
+    background-color: #F8EFE5; /* Beige background color */
+}
+
+/* Wrapper for the image on the left */
+.image-container {
+    flex: 1; /* Allow the image container to take up equal space */
+    display: flex;
+    justify-content: flex-end; /* Push the image closer to the center */
+    align-items: center; /* Vertically center image */
+}
+
+/* Styling for the image */
+.center-image {
+    width: 500px; /* Increase size of the image */
+    max-width: 100%;
+    border-radius: 8px;
+    margin-right: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.center-image:hover {
+    transform: scale(1.05);
+    /*box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);*/
+}
+
+/* Text block on the right */
+.text {
+    flex: 1; /* Allow the text container to take up equal space */
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center; /* Vertically center the text block */
+    align-items: flex-start; /* Align text content closer to the center */
+    text-align: left; /* Ensure text alignment is left */
+    padding-left: 40px; /* Add space between image and text */
+    font-family: 'Roboto', 'sans-serif';
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: 143%;*/
+    /* or 226px */
+    letter-spacing: 0.2em;
+
+    color: #000000;
+}
+
+/* Styling for the title */
+.title-image {
+    width: 300px; /* Increase the size of the title image */
+    display: block;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the subtitle */
+.subtitle {
+    font-size: 1.8rem; /* Increase the font size for better visibility */
+    color: #555;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+
+/* Quote Section Styles */
+.quote-section {
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: space-around; /* Space out the text and image */
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 90vh; /* Full height for visual impact */
+    background-color: #F8EFE5; /* Match the beige background color */
+}
+
+/* Wrapper for the text on the left */
+.quote-content {
+    flex: 1; /* Equal space with the image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center text */
+    text-align: left; /* Align text to the left */
+    padding-right: 40px; /* Add spacing between text and image */
+}
+
+/* Styling for the quote mark */
+.quote-mark {
+    font-size: 9rem; /* Larger font size for the quote mark */
+    color: #FF6D00; /* Bright orange color for the quote mark */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    line-height: 10%;
+}
+
+/* Styling for the quote text */
+.quote-text {
+    font-size: 2rem; /* Large, readable font size for the quote */
+    color: #333;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    margin: 20px;
+
+    /*line-height: 143%;*/
+    /* or 226px */
+
+    letter-spacing: 0.2em;
+}
+
+/* Wrapper for the image on the right */
+.quote-image {
+    flex: 1; /* Equal space with the text */
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Vertically center image */
+}
+
+/* Wrapper for layered fire images */
+.fire-wrapper {
+    position: relative; /* Enables layering */
+    width: 320px; /* Base size for the wrapper */
+    height: 320px; /* Matches the size of the large fire */
+}
+
+/* Large fire image */
+.fire-large {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%; /* Full size of the wrapper */
+    z-index: 1; /* Ensure it stays behind the smaller fire */
+    opacity: 0.8; /* Add slight transparency for effect */
+    animation: large-fire-flicker 2s infinite ease-in-out; /* Add animation */
+}
+
+/* Small fire image */
+.fire-small {
+    position: absolute;
+    bottom: -60%; /* Position at the bottom of the large fire */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%) scale(0.5); /* Center and scale down */
+    width: 100%; /* Smaller than the large fire */
+    z-index: 2; /* Ensure it stays on top */
+    opacity: 1; /* Fully opaque */
+    animation: small-fire-flicker 2s infinite ease-in-out; /* Add animation */
+}
+
+/* Animation for large fire flicker */
+@keyframes large-fire-flicker {
+    0%, 100% {
+        transform: scale(1) translateY(0); /* Default size and position */
+        opacity: 0.8; /* Normal opacity */
+    }
+    50% {
+        transform: scale(1.05) translateY(-5px); /* Slightly larger and higher */
+        opacity: 1; /* Brighter */
+    }
+}
+
+/* Animation for small fire flicker */
+@keyframes small-fire-flicker {
+    0%, 100% {
+        transform: translateX(-50%) scale(0.5) translateY(0); /* Default size */
+        opacity: 1; /* Normal opacity */
+    }
+    50% {
+        transform: translateX(-50%) scale(0.55) translateY(5px); /* Slightly larger and lower */
+        opacity: 0.9; /* Dimmer */
+    }
+}
+
+
+/* Visual Solutions Section */
+.visual-solutions-section {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: space-between; /* Separate text and illustration */
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh; /* Full-screen height */
+    background-color: #F8EFE5; /* Matches the beige background */
+}
+
+/* Content Wrapper */
+.visual-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Text Block */
+.visual-text {
+    flex: 1; /* Allow text to take up equal space */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem; /* Adjust font size for readability */
+    color: #000000; /* Dark text color */
+    line-height: 1.8; /* Increase line spacing for better readability */
+    margin-right: 20px; /* Add space between text and illustration */
+    text-align: left; /* Align text to the left */
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
+
+/* Illustration Block */
+.visual-illustration {
+    flex: 1; /* Allow illustration to take up equal space */
+    display: flex;
+    justify-content: flex-end; /* Align illustration to the right */
+    align-items: center; /* Center illustration vertically */
+}
+
+.visual-illustration img {
+    max-width: 400px; /* Limit the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    animation: swing 4s infinite ease-in-out; /* Add subtle animation */
+}
+
+/* Swing Animation */
+@keyframes swing {
+    0%, 100% {
+        transform: rotate(0deg); /* Default position */
+    }
+    50% {
+        transform: rotate(5deg); /* Swing slightly */
+    }
+}
+
+
+/* Illustrations Section */
+.illustrations-section {
+    background-color: #F8EFE5; /* Matches the beige background */
+    padding: 60px 40px; /* Adds padding around the section */
+    text-align: center;
+    height: 100vh;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 40px;
+    margin-left: 150px;
+    margin-top: 140px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+/* Content Wrapper */
+.illustrations-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Space between the images */
+}
+
+/* Individual Illustration Styling */
+.illustration {
+    width: 65%; /* Adjust size to fit side by side */
+    max-width: 600px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.illustration:hover {
+    transform: rotate(0deg) scale(1.05); /* Straighten and enlarge on hover */
+    /*box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);*/
+}
+
+
+/* Lyrics Section */
+.lyrics-section {
+    display: flex;
+    justify-content: space-between; /* Space evenly between images */
+    align-items: center; /* Vertically center images */
+    padding: 60px 40px; /* Add spacing around the section */
+    background-color: #F8EFE5; /* Matches the beige background */
+}
+
+/* Image Container */
+.image-container {
+    flex: 1; /* Allow images to take equal space */
+    display: flex;
+    justify-content: center; /* Center images inside the container */
+    padding: 20px; /* Add spacing around each image */
+}
+
+/* Styling for the images */
+.illustration-image {
+    width: 90%; /* Adjust width to fit nicely in the layout */
+    max-width: 400px; /* Set a max-width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+}
+
+.illustration-image:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add more shadow on hover */
+}
+
+/* Art-Work Section */
+.artwork-section {
+    background-color: #F8EFE5; /* Matches the beige background */
+    padding: 60px 40px; /* Adds padding around the section */
+    text-align: center; /* Center align the section */
+}
+
+/* Grid for Artworks */
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between items */
+    justify-items: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+/* Individual Artwork Item */
+.artwork-item {
+    position: relative;
+    width: 100%; /* Full width within the grid cell */
+    max-width: 400px; /* Limit maximum width */
+    overflow: hidden; /* Crop images if needed */
+    border-radius: 8px; /* Optional rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+}
+
+/* Styling for the images */
+.artwork-image {
+    width: 100%; /* Responsive image size */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Add hover effect */
+}
+
+/* Artwork 6 specific styling */
+.artwork-item:nth-child(6) {
+    grid-column: span 2; /* Span across 2 columns */
+    max-width: unset; /* Allow it to expand beyond default max-width */
+}
+
+.artwork-item:nth-child(6) .artwork-image {
+    width: 100%; /* Full width inside the expanded grid cell */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+/* Slider Section */
+.slider-section {
+    background-color: #F8EFE5; /* Beige background */
+    padding: 40px 20px;
     text-align: center;
 }
 
-#navigation a {
-    color: #4c6987; 
-    text-decoration: none;
-    margin: 7px;
-    padding: 5px 3px;
-    font-size: 18px;
-    display: inline-block;
-    transition: color 0.3s ease;
-}
-
-#navigation a:hover {
-    color: #88c3ff;
-}
-
-
-section h3 {
-    margin: 20px;
-    font-size: 28px;
-    font-weight: 600;
+/* Section Title */
+.slider-title {
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #000;
     margin-bottom: 20px;
-    color: #1d1d1f;
+    margin-left: 135px;
+    margin-top: 130px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
 }
 
-h1 {
-    font-size: 36px;
-    color: #1d1d1f;
+/* Slider Container */
+.slider-container {
+    overflow: hidden; /* Hide overflow to create slider effect */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Slider Wrapper */
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth sliding effect */
+    gap: 20px;
+}
+
+/* Individual Slide */
+.slide {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 100%; /* Full width for each slide */
+}
+
+/* Images in the Slide */
+.slider-image {
+    flex: 1; /* Each image takes equal space */
+    max-width: 27%; /* Each image is one-third of the slider */
+    max-height: 55vh;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider Controls */
+.slider-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.slider-prev, .slider-next {
+    background-color: #0C6B2A;
+    color: #fff;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.slider-prev:hover, .slider-next:hover {
+    background-color: #ffc107;
 }
 
 
-img {
-    margin: 5px;
-    border-radius: 4px;
+/* Footer Section */
+.footer-section {
+    background-color: #F8EFE5; /* Beige background */
+    padding: 100px 20px 50px; /* Increase padding for larger section */
+    text-align: center; /* Center align all content */
+    position: relative;
 }
 
-ul li {
-    background-color: #eee;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
+/* Star Icon Wrapper */
+.footer-star {
+    margin-bottom: 30px; /* Add more space below the star */
 }
 
-#contacts ul {
+.star-icon {
+    width: 80px; /* Increase star size */
+    height: auto;
+    margin: 0 auto; /* Center the star */
+}
+
+/* Title Styles */
+.footer-title {
+    font-size: 3rem; /* Larger font size for the title */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #000; /* Black color for contrast */
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 60px; /* Add more space below the title */
+}
+
+/* Footer Links Wrapper */
+.footer-links {
+    display: flex;
+    justify-content: center; /* Center the items */
+    gap: 60px; /* Increase space between items */
+}
+
+/* Footer Item */
+.footer-item {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-}
-
-#contacts ul li {
-    margin-bottom: 15px;
-     text-decoration: none;
-
-}
-
-#contacts ul li a {
-    color: #0071e3;
+    align-items: center; /* Center align text and image */
+    max-width: 300px; /* Increase the width for larger images */
     text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
 }
 
-#contacts ul li a:hover {
-    color: #005bb5;
-    text-decoration: underline;
+/* Footer Image */
+.footer-image {
+    width: 100%; /* Take full width */
+    max-width: 200px; /* Limit the image size */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Add more space between image and text */
+    transition: transform 0.3s ease; /* Add hover effect */
 }
+
+/* Footer Text */
+.footer-text {
+    font-size: 1.5rem; /* Increase font size */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; /* Make text slightly bolder */
+    color: #000; /* Black text color */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Hover Effects */
+.footer-item:hover {
+    transform: scale(1.1); /* Enlarge slightly */
+}
+
+.footer-item:hover .footer-image {
+    transform: scale(1.2); /* Enlarge the image */
+}
+
+/* Footer Bottom Line */
+.footer-line {
+    height: 15px; /* Increase thickness of the line */
+    background-color: #FF6D00; /* Bright orange color */
+    margin-top: 60px; /* Add more space above the line */
+    width: 100%; /* Full width of the footer */
+    position: absolute;
+    bottom: 0; /* Stick the line to the bottom */
+    left: 0;
+}
+
+
+
+
+
+
+
