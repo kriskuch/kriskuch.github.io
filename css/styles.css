@@ -588,15 +588,19 @@ section.visible {
     color: #000; /* Black text color */
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-bottom: 60px;
+ 
 }
 
 /* Hover Effects */
 .footer-item:hover {
     transform: scale(1.1); /* Enlarge slightly */
+  
 }
 
 .footer-item:hover .footer-image {
     transform: scale(1.2); /* Enlarge the image */
+     
 }
 
 /* Footer Bottom Line */
