@@ -45,3 +45,70 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Slider elements not found. Ensure your HTML structure matches the script.");
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.nav');
+    const navLinks = document.querySelectorAll('.nav a');
+
+    // Function to check if the device is a smartphone
+    const isSmartphone = () => window.innerWidth <= 768; // Adjust breakpoint if needed
+
+    // Toggle menu visibility
+    burgerMenu.addEventListener('click', () => {
+        if (isSmartphone()) {
+            burgerMenu.classList.toggle('active');
+            nav.classList.toggle('visible');
+            nav.classList.toggle('hidden');
+        }
+    });
+
+    // Close menu after clicking a link
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (isSmartphone()) {
+                burgerMenu.classList.remove('active');
+                nav.classList.remove('visible');
+                nav.classList.add('hidden');
+            }
+        });
+    });
+
+    // Handle window resize to reset the menu state for larger screens
+    window.addEventListener('resize', () => {
+        if (!isSmartphone()) {
+            burgerMenu.classList.remove('active');
+            nav.classList.remove('hidden');
+            nav.classList.remove('visible');
+        } else {
+            nav.classList.add('hidden'); // Hide the nav on smartphones initially
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("image-modal");
+    const modalImage = modal.querySelector("img");
+    const closeButton = modal.querySelector(".close-button");
+
+    // Open modal on image click
+    document.querySelectorAll(".fullscreen-image").forEach((image) => {
+        image.addEventListener("click", (e) => {
+            modalImage.src = e.target.src;
+            modal.classList.add("active");
+        });
+    });
+
+    // Close modal on close button click
+    closeButton.addEventListener("click", () => {
+        modal.classList.remove("active");
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+        }
+    });
+});
+

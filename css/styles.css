@@ -22,19 +22,20 @@ a {
 }
 
 /* Header styles */
+/* Header styles */
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space out logo and burger menu */
     align-items: center;
     padding: 20px 40px;
-    background-color: #0C6B2A;;
+    background-color: #0C6B2A;
     height: 100px; /* Consistent header height */
     position: fixed;
     width: 100%;
     z-index: 5;
 }
 
-/* Initial hidden state */
+/* Initial hidden state for sections */
 section.hidden {
     opacity: 0;
     transform: translateY(50px); /* Move section slightly downward */
@@ -47,16 +48,21 @@ section.visible {
     transform: translateY(0); /* Reset position */
 }
 
-
 /* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
     height: 70px; /* Adjust logo size */
+    padding-top: 20px;
 }
 
 /* Navigation */
 .nav {
     display: flex;
-    gap: 40px; /* Increased spacing between nav items */
+    gap: 40px; /* Space between navigation links */
 }
 
 .nav a {
@@ -66,19 +72,133 @@ section.visible {
     text-transform: uppercase; /* Ensure all text is uppercase */
     transition: color 0.3s ease;
     font-family: 'Roboto', 'sans-serif';
-    font-style: normal;
     line-height: 125%;
     text-align: center;
     letter-spacing: 0.1em;
     margin-right: 50px;
     font-variant: all-small-caps;
-
-
 }
 
 .nav a:hover {
     color: #ffc107; /* Highlight color for hover */
 }
+
+.nav.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    display: none; /* Optional: hides completely when not visible */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav.visible {
+    transform: translateX(0);
+    opacity: 1;
+    display: flex; /* Ensure it's visible */
+}
+
+
+/* Burger Menu */
+.burger-menu {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.burger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: #EEEEDC; /* White */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Burger menu active state animation */
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Navigation */
+.nav.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    background-color: #0C6B2A;
+    width: 100%;
+    height: calc(100vh - 100px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav {
+        position: absolute;
+        top: 100px;
+        right: 0;
+        background-color: #0C6B2A;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        width: 100%;
+        height: calc(100vh - 100px);
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav a {
+        font-size: 20px;
+        color: #EEEEDC; /* White text for contrast */
+        margin-right: 0; /* Reset margin for vertical alignment */
+    }
+
+    .nav a:hover {
+        color: #ffc107; /* Highlight color for hover */
+    }
+
+    /* Show burger menu only on mobile */
+    .burger-menu {
+        display: flex; /* Show burger menu */
+        order: 2; /* Place burger menu after the logo */
+    }
+
+    /* Logo alignment for mobile */
+    .logo {
+        order: 1; /* Place logo before burger menu */
+        margin-right: auto; /* Push logo to the left */
+    }
+
+    .header {
+        justify-content: space-between; /* Space out logo and burger menu */
+    }
+}
+
 
 /* Hero Section Styles */
 .hero-section {
@@ -424,6 +544,11 @@ section.visible {
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
 }
 
+.artwork-item:hover {
+    transform: scale(1.05);
+    /*box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);*/
+}
+
 /* Styling for the images */
 .artwork-image {
     width: 100%; /* Responsive image size */
@@ -588,19 +713,15 @@ section.visible {
     color: #000; /* Black text color */
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 50px;
- 
 }
 
 /* Hover Effects */
 .footer-item:hover {
     transform: scale(1.1); /* Enlarge slightly */
-  
 }
 
 .footer-item:hover .footer-image {
     transform: scale(1.2); /* Enlarge the image */
-
 }
 
 /* Footer Bottom Line */
@@ -615,8 +736,347 @@ section.visible {
 }
 
 
+/* General Mobile Styles */
+@media (max-width: 768px) {
+
+    /* Hero Section */
+    .hero-section {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .image-container {
+        margin-top: 120px;
+        margin-bottom: 50px;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .center-image {
+        width: 80%;
+    }
+
+    .text {
+        align-items: center;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .title-image {
+        margin-left: 0;
+    }
+
+    .subtitle {
+        margin-left: 0;
+        font-size: 1.2rem;
+    }
+
+    /* Quote Section */
+    .quote-section {
+        flex-direction: column;
+        height: 60vh; /* Adjust height for smaller screens */
+        padding: 20px; /* Reduced padding */
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .quote-content {
+        padding: 10px; /* Reduced padding */
+    }
+
+    .quote-mark {
+        font-size: 3rem; /* Further scale down quote mark */
+    }
+
+    .quote-text {
+        font-size: 1.2rem; /* Adjust text size */
+    }
+
+    .quote-image {
+        margin-top: 15px; /* Adjust margin */
+    }
+
+    .fire-wrapper {
+        width: 120px; /* Further reduce size for smaller screens */
+        height: 120px;
+    }
+
+    /* Visual Solutions Section */
+    .visual-solutions-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .visual-text {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .visual-illustration img {
+        max-width: 90%;
+    }
+
+    /* Illustrations Section */
+    .illustrations-section {
+        padding: 20px;
+        height: auto;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-top: 150px;
+        margin-left: 0;
+    }
+
+    .illustrations-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .illustration {
+        width: 90%;
+    }
+
+    /* Lyrics Section */
+    .lyrics-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-container {
+        padding: 10px;
+    }
+
+    .illustration-image {
+        width: 90%;
+    }
+
+    /* Art-Work Section */
+    .artwork-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .artwork-item:nth-child(6) {
+        grid-column: auto; /* Remove spanning for better layout on mobile */
+    }
+
+    /* Slider Section */
+    .slider-title {
+        font-size: 1.5rem;
+        margin-top: 120px;
+        margin-bottom: 120px;
+        margin-left: 0;
+    }
+
+    .slider-wrapper {
+        gap: 0; /* Remove gap between slides */
+    }
+
+    .slide {
+        flex-direction: row; /* Stack images vertically */
+    }
+
+    .slider-image {
+        max-width: 28%; /* Make images full-width */
+        margin: 0 auto; /* Center images */
+    }
+
+    .slider-controls {
+        margin-top: 10px;
+        gap: 5px; /* Reduce gap between buttons */
+    }
+
+    .slider-prev, .slider-next {
+        font-size: 1.5rem;
+        padding: 5px 10px; /* Reduce button size */
+    }
+
+    /* Footer Section */
+    .footer-section {
+        padding: 50px 20px;
+    }
+
+    .footer-title {
+        font-size: 1.8rem;
+    }
+
+    .footer-links {
+        display: flex; /* Magic starts here, turning your container into a flex container */
+        justify-content: center; /* This centers the child horizontally */
+        align-items: center;
+        margin-bottom: 70px;
+    }
 
 
+    .footer-image {
+        max-width: 80%;
+    }
 
+    .footer-line {
+        height: 50px;
+    }
+}
 
+/* Fullscreen Modal Styles */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
+.image-modal.active {
+    display: flex; /* Show modal when active */
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.image-modal .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.image-modal .close-button:hover {
+    transform: scale(1.2);
+}
+/* Small Smartphone Styles (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Header adjustments */
+    .header {
+        padding: 10px 20px; /* Smaller padding for small screens */
+        height: 80px; /* Reduce header height */
+    }
+
+    .logo img {
+        height: 50px; /* Reduce logo size */
+    }
+
+    .nav a {
+        font-size: 16px; /* Smaller font size for navigation links */
+        letter-spacing: 0.05em; /* Adjust letter spacing */
+    }
+
+    /* Burger menu */
+    .burger-menu {
+        width: 25px;
+        height: 25px;
+    }
+
+    .burger-menu span {
+        height: 2px; /* Thinner lines for the burger menu */
+    }
+
+    /* Hero section */
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .center-image {
+        width: 90%; /* Adjust image size */
+        margin-right: 0;
+    }
+
+    .text {
+        text-align: center; /* Center align text */
+        padding-left: 0;
+    }
+
+    .title-image {
+        width: 200px; /* Reduce title image size */
+    }
+
+    .subtitle {
+        font-size: 1.2rem; /* Reduce font size */
+        margin-left: 0;
+    }
+
+    /* Quote section */
+    .quote-section {
+        padding: 20px;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .quote-mark {
+        font-size: 2rem; /* Reduce quote mark size */
+    }
+
+    .quote-text {
+        font-size: 1rem; /* Reduce font size */
+    }
+
+    /* Illustration and artwork sections */
+    .illustration, .artwork-image {
+        width: 100%; /* Full width for small screens */
+    }
+
+    /* Footer */
+    .footer-title {
+        font-size: 1.5rem; /* Adjust title size */
+    }
+
+    .footer-item {
+        max-width: 80%;
+    }
+
+    .footer-text {
+        font-size: 1rem; /* Reduce footer text size */
+    }
+}
+
+/* Medium Smartphone Styles (max-width: 600px) */
+@media (max-width: 600px) {
+    /* Navigation adjustments */
+    .nav {
+        gap: 15px;
+    }
+
+    .nav a {
+        font-size: 18px; /* Slightly larger font than small screens */
+    }
+
+    /* Slider images */
+    .slider-image {
+        max-width: 30%; /* Adjust slider image size */
+    }
+
+    .slider-controls {
+        gap: 8px;
+    }
+
+    /* Footer */
+    .footer-title {
+        font-size: 2rem; /* Slightly larger for medium screens */
+    }
+
+    .footer-links {
+        gap: 40px; /* Adjust spacing */
+    }
+
+    .footer-item {
+        max-width: 90%; /* Adjust item width */
+    }
+}

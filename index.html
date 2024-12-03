@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiny Tina</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tiny Tina - Графічна дизайнерка та ілюстраторка зі Львова.">
+    <meta name="keywords" content="Tiny Tina, графічний дизайн, ілюстрація, Львів, фотографія">
+    <meta name="author" content="Tiny Tina">
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
 </head>
 <body>
 <!-- Header -->
 <header class="header">
     <div class="logo">
-        <img src="img/LogoHeader.webp" alt="Tiny Tina Logo">
+        <a href="#about">
+            <img src="img/LogoHeader.webp" alt="Tiny Tina Logo">
+        </a>
     </div>
+    <button class="burger-menu" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
     <nav class="nav">
         <a href="#about">Про мене</a>
         <a href="#projects">Проекти</a>
@@ -21,6 +37,7 @@
         <a href="#contacts">Контакти</a>
     </nav>
 </header>
+
 
 <!-- Main Section -->
 <main>
@@ -31,7 +48,7 @@
         </div>
         <div class="text">
             <img src="img/TinyTina.webp" alt="Tiny Tina Logo Text" class="title-image">
-            <p class="subtitle">Графічна дизайнерка та <br> ілюстраторка зі Львова.</p>
+            <p class="subtitle">Графічна дизайнерка та <br> ілюстраторка зі Львова</p>
         </div>
     </section>
 
@@ -73,38 +90,59 @@
 
     <section class="lyrics-section">
         <div class="image-container">
-            <img src="img/LyricsIllustration1.webp" alt="Illustration 1" class="illustration-image">
+            <a class="fullscreen-image">
+                <img src="img/LyricsIllustration1.webp" alt="Illustration 1" class="illustration-image">
+            </a>
         </div>
         <div class="image-container">
-            <img src="img/LyricsIllustration2.webp" alt="Illustration 2" class="illustration-image">
+            <a class="fullscreen-image">
+                <img src="img/LyricsIllustration2.webp" alt="Illustration 2" class="illustration-image">
+            </a>
         </div>
         <div class="image-container">
-            <img src="img/LyricsIllustration3.webp" alt="Illustration 3" class="illustration-image">
+            <a class="fullscreen-image">
+                <img src="img/LyricsIllustration3.webp" alt="Illustration 3" class="illustration-image">
+            </a>
         </div>
     </section>
+
 
     <section class="artwork-section">
         <div class="artwork-grid">
             <div class="artwork-item">
-                <img src="img/ArtIllustration1.webp" alt="Art Work 1" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration1.webp" alt="Art Work 1" class="artwork-image">
+                </a>
             </div>
             <div class="artwork-item">
-                <img src="img/ArtIllustration2.webp" alt="Art Work 2" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration2.webp" alt="Art Work 2" class="artwork-image">
+                </a>
             </div>
             <div class="artwork-item">
-                <img src="img/ArtIllustration3.webp" alt="Art Work 3" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration3.webp" alt="Art Work 3" class="artwork-image">
+                </a>
             </div>
             <div class="artwork-item">
-                <img src="img/ArtIllustration4.webp" alt="Art Work 4" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration4.webp" alt="Art Work 4" class="artwork-image">
+                </a>
             </div>
             <div class="artwork-item">
-                <img src="img/ArtIllustration5.webp" alt="Art Work 5" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration5.webp" alt="Art Work 5" class="artwork-image">
+                </a>
             </div>
             <div class="artwork-item">
-                <img src="img/ArtIllustration6.webp" alt="Art Work 6" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration6.webp" alt="Art Work 6" class="artwork-image">
+                </a>
             </div>
             <div class="artwork-item">
-                <img src="img/ArtIllustration7.webp" alt="Art Work 7" class="artwork-image">
+                <a class="fullscreen-image">
+                    <img src="img/ArtIllustration7.webp" alt="Art Work 7" class="artwork-image">
+                </a>
             </div>
         </div>
     </section>
@@ -147,7 +185,7 @@
             <!-- Instagram -->
             <div class="footer-item">
                 <a href="https://www.instagram.com/tiny_.tina/" target="_blank">
-                    <img src="img/Contacts3.webp" alt="Instagram" class="footer-image">
+                    <img src="img/Contacts1.webp" alt="Instagram" class="footer-image">
                     <p class="footer-text">INSTAGRAM</p>
                 </a>
             </div>
@@ -161,14 +199,17 @@
             <!-- Photography -->
             <div class="footer-item">
                 <a href="https://www.instagram.com/blu.kachka/" target="_blank">
-                    <img src="img/Contacts1.webp" class="footer-image">
+                    <img src="img/Contacts3.webp" alt="Photography" class="footer-image">
                     <p class="footer-text">ЗНИМКУЮ!</p>
                 </a>
             </div>
         </div>
         <div class="footer-line"></div>
     </footer>
-
+    <div class="image-modal" id="image-modal">
+        <button class="close-button" aria-label="Close full-screen image">&times;</button>
+        <img src="" alt="Full Screen View">
+    </div>
 
 </main>
 
